@@ -1,10 +1,13 @@
 package com.freenow.businesslayer.user;
 
+import com.freenow.pojo.user.AllUsers;
 import com.freenow.pojo.user.SingleUser;
 import com.freenow.util.PropertyReader;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 import static com.freenow.constant.ServiceConstant.BASE_URL;
 import static com.freenow.constant.ServiceConstant.USERS_ENDPOINT;
@@ -30,6 +33,39 @@ public class SingleUserBusinessLogic extends PropertyReader {
         Response response = when().get(url);
         SingleUser singleUser = response.getBody().as(SingleUser.class);
         log.info("Info: " + singleUser);
+        return singleUser;
+    }
+
+    /*
+     * Extract data as Response object
+     * Populate Single User Response POJOs
+     *
+     * @param username - username to fetch a single user from users list
+     */
+    public static SingleUser getSingleUserByUserName(String username) {
+        String baseUrl = prop.getProperty(BASE_URL);
+        String users = prop.getProperty(USERS_ENDPOINT);
+        String url = baseUrl + users;
+        log.info("URL to be hit:" + url);
+
+        AllUsers allUsers = AllUsersBusinessLogic.getAllUsers();
+        List<SingleUser> allUsersList = allUsers.getListOfUsers();
+        SingleUser singleUser = new SingleUser();
+
+        for (int i = 0; i < allUsersList.size(); i++) {
+            if (allUsersList.get(i).getUsername().equalsIgnoreCase(username)) {
+                singleUser.setId(allUsersList.get(i).getId());
+                singleUser.setName(allUsersList.get(i).getName());
+                singleUser.setUsername(allUsersList.get(i).getUsername());
+                singleUser.setEmail(allUsersList.get(i).getEmail());
+                singleUser.setAddress(allUsersList.get(i).getAddress());
+                singleUser.setPhone(allUsersList.get(i).getPhone());
+                singleUser.setWebsite(allUsersList.get(i).getWebsite());
+                singleUser.setCompany(allUsersList.get(i).getCompany());
+            }
+        }
+
+        log.info("URL to be hit:" + url);
         return singleUser;
     }
 }
