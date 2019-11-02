@@ -3,6 +3,13 @@ package com.freenow.pojo.album;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * POJOs for Single Album by id API Response
+ * https://<domain>/albums/<id>
+ * e.g. https://jsonplaceholder.typicode.com/albums/1
+ *
+ * @author Arsalan Inam
+ */
 @Getter
 @Setter
 public class SingleAlbum {

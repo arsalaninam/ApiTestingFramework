@@ -5,6 +5,13 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * POJOs for All Photos API Response
+ * http://<domain>/photos
+ * e.g. http://jsonplaceholder.typicode.com/photos
+ *
+ * @author Arsalan Inam
+ */
 @Getter
 @Setter
 public class AllPhotos {

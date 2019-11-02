@@ -3,6 +3,13 @@ package com.freenow.pojo.comment;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * POJOs for Single Comment by id API Response
+ * https://<domain>/comments/<id>
+ * e.g. https://jsonplaceholder.typicode.com/comments/1
+ *
+ * @author Arsalan Inam
+ */
 @Getter
 @Setter
 public class SingleComment {

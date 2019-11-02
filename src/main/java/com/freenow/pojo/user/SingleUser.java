@@ -5,6 +5,13 @@ import com.freenow.pojo.company.Company;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * POJOs for Single User by id API Response
+ * https://<domain>/users/<id>
+ * e.g. https://jsonplaceholder.typicode.com/users/1
+ *
+ * @author Arsalan Inam
+ */
 @Getter
 @Setter
 public class SingleUser {
