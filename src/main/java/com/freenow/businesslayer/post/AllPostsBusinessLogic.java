@@ -39,7 +39,7 @@ public class AllPostsBusinessLogic extends PropertyReader {
      * Fetch list of all posts json set respective to particular userId
      * e.g. https://jsonplaceholder.typicode.com/posts?userId=1
      */
-    public static AllPosts getAllPostsForUserId(String userId) {
+    public static AllPosts getAllPostsForUserId(int userId) {
         String baseUrl = prop.getProperty(BASE_URL);
         String postsEndpointQueryParamUserId = prop.getProperty(POSTS_ENDPOINT_QUERY_PARAM_USERS_ID);
         String url = baseUrl + postsEndpointQueryParamUserId + userId;

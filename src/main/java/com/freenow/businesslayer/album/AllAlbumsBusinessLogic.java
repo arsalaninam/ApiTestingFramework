@@ -39,7 +39,7 @@ public class AllAlbumsBusinessLogic extends PropertyReader {
      * Fetch list of all albums json set respective to particular userId
      * e.g. https://jsonplaceholder.typicode.com/albums?userId=1
      */
-    public static AllAlbums getAllAlbumsForUserId(String userId) {
+    public static AllAlbums getAllAlbumsForUserId(int userId) {
         String baseUrl = prop.getProperty(BASE_URL);
         String albumsEndpointQueryParamUserId = prop.getProperty(ALBUMS_ENDPOINT_QUERY_PARAM_USER_ID);
         String url = baseUrl + albumsEndpointQueryParamUserId + userId;

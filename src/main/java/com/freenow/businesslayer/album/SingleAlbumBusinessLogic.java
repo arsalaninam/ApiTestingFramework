@@ -21,7 +21,7 @@ public class SingleAlbumBusinessLogic extends PropertyReader {
      *
      * @param id - album id to fetch a single album
      */
-    public static SingleAlbum getSingleAlbumById(String id) {
+    public static SingleAlbum getSingleAlbumById(int id) {
         String baseUrl = prop.getProperty(BASE_URL);
         String albumsEndpoint = prop.getProperty(ALBUMS_ENDPOINT);
         String url = baseUrl + albumsEndpoint + id;
@@ -29,6 +29,7 @@ public class SingleAlbumBusinessLogic extends PropertyReader {
 
         Response response = when().get(url);
         SingleAlbum singleAlbum = response.getBody().as(SingleAlbum.class);
+        log.info("Info: " + singleAlbum);
         return singleAlbum;
     }
 }

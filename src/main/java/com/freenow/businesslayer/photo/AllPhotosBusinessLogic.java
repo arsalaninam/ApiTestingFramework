@@ -39,7 +39,7 @@ public class AllPhotosBusinessLogic extends PropertyReader {
      * Fetch list of all photos json set respective to particular albumId
      * e.g. https://jsonplaceholder.typicode.com/photos?albumId=1
      */
-    public static AllPhotos getAllPhotosForAlbumId(String albumId) {
+    public static AllPhotos getAllPhotosForAlbumId(int albumId) {
         String baseUrl = prop.getProperty(BASE_URL);
         String photosEndpointQueryParamAlbumId = prop.getProperty(PHOTOS_ENDPOINT_QUERY_PARAM_ALBUM_ID);
         String url = baseUrl + photosEndpointQueryParamAlbumId + albumId;

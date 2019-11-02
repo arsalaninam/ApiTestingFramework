@@ -21,7 +21,7 @@ public class SinglePostBusinessLogic extends PropertyReader {
      *
      * @param id - post id to fetch a single post
      */
-    public static SinglePost getSinglePostById(String id) {
+    public static SinglePost getSinglePostById(int id) {
         String baseUrl = prop.getProperty(BASE_URL);
         String postsEndpoint = prop.getProperty(POSTS_ENDPOINT);
         String url = baseUrl + postsEndpoint + id;
@@ -29,6 +29,7 @@ public class SinglePostBusinessLogic extends PropertyReader {
 
         Response response = when().get(url);
         SinglePost singlePost = response.getBody().as(SinglePost.class);
+        log.info("Info: " + singlePost);
         return singlePost;
     }
 }

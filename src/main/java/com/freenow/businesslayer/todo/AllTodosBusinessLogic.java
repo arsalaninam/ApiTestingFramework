@@ -39,7 +39,7 @@ public class AllTodosBusinessLogic extends PropertyReader {
      * Fetch list of all todos json set respective to particular userId
      * e.g. https://jsonplaceholder.typicode.com/todos?userId=1
      */
-    public static AllTodos getAllTodosForUserId(String userId) {
+    public static AllTodos getAllTodosForUserId(int userId) {
         String baseUrl = prop.getProperty(BASE_URL);
         String todosEndpointQueryParamUserId = prop.getProperty(TODOS_ENDPOINT_QUERY_PARAM_USER_ID);
         String url = baseUrl + todosEndpointQueryParamUserId + userId;
