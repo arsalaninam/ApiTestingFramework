@@ -1,4 +1,104 @@
 package com.freenow.testcase.singleEndpoint.photo;
 
-public class PhotosTest {
+import com.freenow.businesslayer.photo.SinglePhotoBusinessLogic;
+import com.freenow.data.dataprovider.CommonDataProvider;
+import com.freenow.data.dataprovider.PhotoDataProvider;
+import com.freenow.pojo.photo.SinglePhoto;
+import com.freenow.testcase.singleEndpoint.SingleEndpointCommon;
+import io.restassured.response.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import static com.freenow.constant.ResponseCodeConstant.STATUS_CODE_404;
+import static com.freenow.constant.ScenarioNameConstant.*;
+import static com.freenow.constant.ServiceConstant.PHOTOS_ENDPOINT;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.hasSize;
+
+public class PhotosTest extends SingleEndpointCommon {
+
+    private static final Logger log = LoggerFactory.getLogger(PhotosTest.class);
+    private String photosEndpoint = prop.getProperty(PHOTOS_ENDPOINT);
+
+    /********************************************************
+     * Send a GET request to /photos. Validate that response
+     * has HTTP status code 200 and Content Type JSON
+     *******************************************************/
+    @Test
+    public void testResponseStatusCode200AndContentTypeJSON() {
+        log.info(VALIDATE_STATUS_CODE_200_AND_CONTENT_TYPE_JSON + photosEndpoint);
+        given().
+                spec(requestSpecification).
+                when().
+                get(photosEndpoint).
+                then().
+                spec(responseSpecification);
+    }
+
+    /***********************************************************
+     * Send a GET request to /photos. Validate that
+     * - response body contains list of 5000 photos
+     * - response has HTTP status code 200 and Content Type JSON
+     ***********************************************************/
+    @Test(dependsOnMethods = "testResponseStatusCode200AndContentTypeJSON")
+    public void fetchListOfPhotosAndAssertSize() {
+        log.info(VALIDATE_LIST_OF_ITEM + photosEndpoint);
+        given().
+                spec(requestSpecification).
+                when().
+                get(photosEndpoint).
+                then().
+                assertThat().
+                body("$", hasSize(5000)).
+                and().
+                spec(responseSpecification);
+    }
+
+    /************************************************************
+     * Send a GET request to /photos/{photosId} and Validate
+     * - response has HTTP status code 200 & Content Type is JSON
+     ***********************************************************/
+    @Test(dataProvider = "validId", dataProviderClass = CommonDataProvider.class)
+    public void testResponseCodeAndContentType(int id) {
+        log.info(VALIDATE_STATUS_CODE_200_AND_CONTENT_TYPE_JSON + photosEndpoint + id);
+        given().
+                spec(requestSpecification).
+                when().
+                get(photosEndpoint + id).
+                then().
+                spec(responseSpecification);
+    }
+
+    /****************************************************************
+     * Send a GET request to /photos/{photosId} and Validate
+     * - response returns the expected id, title, url & thumbnailUrl
+     ***************************************************************/
+    @Test(dependsOnMethods = {"testResponseCodeAndContentType"},
+            dataProvider = "validPhotoIdWithTitleAndUrl", dataProviderClass = PhotoDataProvider.class)
+    public void testResponseBodyWithIdTitleUrlAndThumbnailUrl(int id, String title, String url) {
+        log.info(VALIDATE_RESPONSE_BODY + photosEndpoint + id);
+
+        SinglePhoto singlePhoto = SinglePhotoBusinessLogic.getSinglePhotoById(id);
+        softAssert.assertEquals(singlePhoto.getId(), id);
+        softAssert.assertEquals(singlePhoto.getTitle(), title);
+        softAssert.assertEquals(singlePhoto.getUrl(), url);
+        softAssert.assertNotNull(singlePhoto.getThumbnailUrl());
+        softAssert.assertAll();
+    }
+
+    /******************************************************************
+     * Send a GET request to /photos/{photosId} with invalid photosId
+     * Validate that response has HTTP status code 404
+     *****************************************************************/
+    @Test(dataProvider = "invalidId", dataProviderClass = CommonDataProvider.class)
+    public void testResponseCodeWithInvalidPhotosId(int id) {
+        log.info(VALIDATE_STATUS_CODE_404 + photosEndpoint + id);
+        Response response = given().
+                spec(requestSpecification).
+                when().
+                get(photosEndpoint + id);
+        Assert.assertEquals(response.statusCode(), STATUS_CODE_404);
+    }
 }
