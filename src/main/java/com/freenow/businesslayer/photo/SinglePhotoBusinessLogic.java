@@ -21,7 +21,7 @@ public class SinglePhotoBusinessLogic extends PropertyReader {
      *
      * @param id - photo id to fetch a single photo
      */
-    public static SinglePhoto getSinglePhotoById(String id) {
+    public static SinglePhoto getSinglePhotoById(int id) {
         String baseUrl = prop.getProperty(BASE_URL);
         String photosEndpoint = prop.getProperty(PHOTOS_ENDPOINT);
         String url = baseUrl + photosEndpoint + id;
@@ -29,6 +29,7 @@ public class SinglePhotoBusinessLogic extends PropertyReader {
 
         Response response = when().get(url);
         SinglePhoto singlePhoto = response.getBody().as(SinglePhoto.class);
+        log.info("Info: " + singlePhoto);
         return singlePhoto;
     }
 }

@@ -21,7 +21,7 @@ public class SingleUserBusinessLogic extends PropertyReader {
      *
      * @param id - user id to fetch a single user
      */
-    public static SingleUser getSingleUserById(String id) {
+    public static SingleUser getSingleUserById(int id) {
         String baseUrl = prop.getProperty(BASE_URL);
         String usersEndpoint = prop.getProperty(USERS_ENDPOINT);
         String url = baseUrl + usersEndpoint + id;
@@ -29,6 +29,7 @@ public class SingleUserBusinessLogic extends PropertyReader {
 
         Response response = when().get(url);
         SingleUser singleUser = response.getBody().as(SingleUser.class);
+        log.info("Info: " + singleUser);
         return singleUser;
     }
 }

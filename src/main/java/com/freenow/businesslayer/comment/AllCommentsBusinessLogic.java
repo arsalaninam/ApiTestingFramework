@@ -39,7 +39,7 @@ public class AllCommentsBusinessLogic extends PropertyReader {
      * Fetch list of all comments json set respective to particular postId
      * e.g. https://jsonplaceholder.typicode.com/comments?postId=1
      */
-    public static AllComments getAllCommentsForPostId(String postId) {
+    public static AllComments getAllCommentsForPostId(int postId) {
         String baseUrl = prop.getProperty(BASE_URL);
         String commentsEndpointQueryParamPostId = prop.getProperty(COMMENTS_ENDPOINT_QUERY_PARAM_POST_ID);
         String url = baseUrl + commentsEndpointQueryParamPostId + postId;

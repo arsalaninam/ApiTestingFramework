@@ -21,7 +21,7 @@ public class SingleCommentBusinessLogic extends PropertyReader {
      *
      * @param id - comment id to fetch a single comment
      */
-    public static SingleComment getSingleCommentById(String id) {
+    public static SingleComment getSingleCommentById(int id) {
         String baseUrl = prop.getProperty(BASE_URL);
         String commentsEndpoint = prop.getProperty(COMMENTS_ENDPOINT);
         String url = baseUrl + commentsEndpoint + id;
@@ -29,6 +29,7 @@ public class SingleCommentBusinessLogic extends PropertyReader {
 
         Response response = when().get(url);
         SingleComment singleComment = response.getBody().as(SingleComment.class);
+        log.info("Info: " + singleComment);
         return singleComment;
     }
 }

@@ -21,7 +21,7 @@ public class SingleTodoBusinessLogic extends PropertyReader {
      *
      * @param id - todos id to fetch a single todos
      */
-    public static SingleTodo getSingleTodoById(String id) {
+    public static SingleTodo getSingleTodoById(int id) {
         String baseUrl = prop.getProperty(BASE_URL);
         String todosEndpoint = prop.getProperty(TODOS_ENDPOINT);
         String url = baseUrl + todosEndpoint + id;
@@ -29,6 +29,7 @@ public class SingleTodoBusinessLogic extends PropertyReader {
 
         Response response = when().get(url);
         SingleTodo SingleTodo = response.getBody().as(SingleTodo.class);
+        log.info("Info: " + SingleTodo);
         return SingleTodo;
     }
 }
