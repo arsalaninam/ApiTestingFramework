@@ -1,8 +1,10 @@
 package com.freenow.testcase.singleEndpoint.photo;
 
+import com.freenow.businesslayer.photo.AllPhotosBusinessLogic;
 import com.freenow.businesslayer.photo.SinglePhotoBusinessLogic;
 import com.freenow.data.dataprovider.CommonDataProvider;
 import com.freenow.data.dataprovider.PhotoDataProvider;
+import com.freenow.pojo.photo.AllPhotos;
 import com.freenow.pojo.photo.SinglePhoto;
 import com.freenow.testcase.singleEndpoint.SingleEndpointCommon;
 import io.restassured.response.Response;
@@ -11,11 +13,21 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 import static com.freenow.constant.ResponseCodeConstant.STATUS_CODE_404;
 import static com.freenow.constant.ScenarioNameConstant.*;
 import static com.freenow.constant.ServiceConstant.PHOTOS_ENDPOINT;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.hasSize;
+
+/**
+ * Test Class to perform Photos Endpoint test cases
+ * Endpoints that are used in the following Test Class are
+ * - https://<domain>/photos
+ * - https://<domain>/photos/{id}
+ *
+ * @author Arsalan Inam
+ */
 
 public class PhotosTest extends SingleEndpointCommon {
 
@@ -26,6 +38,7 @@ public class PhotosTest extends SingleEndpointCommon {
      * Send a GET request to /photos. Validate that response
      * has HTTP status code 200 and Content Type JSON
      *******************************************************/
+
     @Test
     public void testResponseStatusCode200AndContentTypeJSON() {
         log.info(VALIDATE_STATUS_CODE_200_AND_CONTENT_TYPE_JSON + photosEndpoint);
@@ -40,26 +53,22 @@ public class PhotosTest extends SingleEndpointCommon {
     /***********************************************************
      * Send a GET request to /photos. Validate that
      * - response body contains list of 5000 photos
-     * - response has HTTP status code 200 and Content Type JSON
      ***********************************************************/
+
     @Test(dependsOnMethods = "testResponseStatusCode200AndContentTypeJSON")
     public void fetchListOfPhotosAndAssertSize() {
         log.info(VALIDATE_LIST_OF_ITEM + photosEndpoint);
-        given().
-                spec(requestSpecification).
-                when().
-                get(photosEndpoint).
-                then().
-                assertThat().
-                body("$", hasSize(5000)).
-                and().
-                spec(responseSpecification);
+
+        AllPhotos allPhotos = AllPhotosBusinessLogic.getAllPhotos();
+        List<SinglePhoto> allPhotosList = allPhotos.getListOfPhotos();
+        Assert.assertEquals(allPhotosList.size(), 5000);
     }
 
     /************************************************************
      * Send a GET request to /photos/{photosId} and Validate
      * - response has HTTP status code 200 & Content Type is JSON
      ***********************************************************/
+
     @Test(dataProvider = "validId", dataProviderClass = CommonDataProvider.class)
     public void testResponseCodeAndContentType(int id) {
         log.info(VALIDATE_STATUS_CODE_200_AND_CONTENT_TYPE_JSON + photosEndpoint + id);
@@ -75,6 +84,7 @@ public class PhotosTest extends SingleEndpointCommon {
      * Send a GET request to /photos/{photosId} and Validate
      * - response returns the expected id, title, url & thumbnailUrl
      ***************************************************************/
+
     @Test(dependsOnMethods = {"testResponseCodeAndContentType"},
             dataProvider = "validPhotoIdWithTitleAndUrl", dataProviderClass = PhotoDataProvider.class)
     public void testResponseBodyWithIdTitleUrlAndThumbnailUrl(int id, String title, String url) {
@@ -92,6 +102,7 @@ public class PhotosTest extends SingleEndpointCommon {
      * Send a GET request to /photos/{photosId} with invalid photosId
      * Validate that response has HTTP status code 404
      *****************************************************************/
+
     @Test(dataProvider = "invalidId", dataProviderClass = CommonDataProvider.class)
     public void testResponseCodeWithInvalidPhotosId(int id) {
         log.info(VALIDATE_STATUS_CODE_404 + photosEndpoint + id);

@@ -64,8 +64,6 @@ public class SingleUserBusinessLogic extends PropertyReader {
                 singleUser.setCompany(allUsersList.get(i).getCompany());
             }
         }
-
-        log.info("URL to be hit:" + url);
         return singleUser;
     }
 }
