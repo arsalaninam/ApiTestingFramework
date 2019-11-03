@@ -1,4 +1,4 @@
-package com.freenow.testcase.multipleEndpoints;
+package com.freenow.testcase.multipleEndpoints.comments;
 
 import com.freenow.businesslayer.comment.AllCommentsBusinessLogic;
 import com.freenow.businesslayer.post.AllPostsBusinessLogic;
@@ -18,6 +18,7 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
+import static com.freenow.constant.ScenarioNameConstant.VALIDATE_EMAIL_FORMAT_IN_COMMENTS_FOR_POSTS_BY_USER;
 import static com.freenow.util.Matcher.validateEmailPattern;
 
 public class CommentsTestUsingMultipleApis extends PropertyReader {
@@ -37,7 +38,10 @@ public class CommentsTestUsingMultipleApis extends PropertyReader {
     @Test(dataProvider = "validUsername", dataProviderClass = UserDataProvider.class)
     public void validateEmailFormatInCommentsForPostsByUser(String userName) {
 
+        log.info(VALIDATE_EMAIL_FORMAT_IN_COMMENTS_FOR_POSTS_BY_USER);
+
         SingleUser singleUser = SingleUserBusinessLogic.getSingleUserByUserName(userName);
+        log.info("Username : " + userName);
         softAssert.assertNotNull(singleUser);
         int userId = singleUser.getId();
         log.info("User Id: " + userId);
