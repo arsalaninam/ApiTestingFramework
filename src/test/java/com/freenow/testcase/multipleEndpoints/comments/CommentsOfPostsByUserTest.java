@@ -21,9 +21,19 @@ import java.util.List;
 import static com.freenow.constant.ScenarioNameConstant.VALIDATE_EMAIL_FORMAT_IN_COMMENTS_FOR_POSTS_BY_USER;
 import static com.freenow.util.Matcher.validateEmailPattern;
 
-public class CommentsTestUsingMultipleApis extends PropertyReader {
+/**
+ * Test Class to perform all the Comments related test cases that are present in Posts made by a User
+ * Endpoints that are used for Comments test cases in the following Test Class are:
+ * - https://<domain>/users
+ * - https://<domain>/posts?userId={userId}
+ * - https://<domain>/comments?postId={postId}
+ *
+ * @author Arsalan Inam
+ */
 
-    private static final Logger log = LoggerFactory.getLogger(CommentsTestUsingMultipleApis.class);
+public class CommentsOfPostsByUserTest extends PropertyReader {
+
+    private static final Logger log = LoggerFactory.getLogger(CommentsOfPostsByUserTest.class);
     private SoftAssert softAssert = ObjectFactory.getSoftAssert();
 
     /*************************************************************************************
@@ -32,6 +42,7 @@ public class CommentsTestUsingMultipleApis extends PropertyReader {
      * - Use the details fetched to make a search for the posts written by the user.
      * - For each post, fetch the comments and validate if the emails in the comment
      * section are in the proper format.
+     *
      * @param userName - A valid username e.g."Samantha"
      *************************************************************************************/
 
@@ -50,16 +61,16 @@ public class CommentsTestUsingMultipleApis extends PropertyReader {
         List<SinglePost> allPostsList = allPostsFromUserId.getListOfPosts();
         softAssert.assertNotNull(allPostsList);
 
-        for (int i = 0; i < allPostsList.size(); i++) {
-            int postsId = allPostsList.get(i).getId();
+        for (SinglePost singlePost : allPostsList) {
+            int postsId = singlePost.getId();
 
             AllComments allCommentsForPostId = AllCommentsBusinessLogic.getAllCommentsForPostId(postsId);
             List<SingleComment> allCommentsList = allCommentsForPostId.getListOfComments();
             softAssert.assertNotNull(allCommentsList);
 
-            for (int j = 0; j < allCommentsList.size(); j++) {
+            for (SingleComment singleComment : allCommentsList) {
 
-                String email = allCommentsList.get(j).getEmail();
+                String email = singleComment.getEmail();
                 log.info("Validate Email: " + email);
                 softAssert.assertTrue(validateEmailPattern(email));
             }

@@ -1,8 +1,10 @@
 package com.freenow.testcase.singleEndpoint.user;
 
+import com.freenow.businesslayer.user.AllUsersBusinessLogic;
 import com.freenow.businesslayer.user.SingleUserBusinessLogic;
 import com.freenow.data.dataprovider.CommonDataProvider;
 import com.freenow.data.dataprovider.UserDataProvider;
+import com.freenow.pojo.user.AllUsers;
 import com.freenow.pojo.user.SingleUser;
 import com.freenow.testcase.singleEndpoint.SingleEndpointCommon;
 import io.restassured.response.Response;
@@ -11,11 +13,21 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 import static com.freenow.constant.ResponseCodeConstant.STATUS_CODE_404;
 import static com.freenow.constant.ScenarioNameConstant.*;
 import static com.freenow.constant.ServiceConstant.USERS_ENDPOINT;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.hasSize;
+
+/**
+ * Test Class to perform Users Endpoint test cases
+ * Endpoints that are used in the following Test Class are
+ * - https://<domain>/users
+ * - https://<domain>/users/{id}
+ *
+ * @author Arsalan Inam
+ */
 
 public class UsersTest extends SingleEndpointCommon {
 
@@ -26,6 +38,7 @@ public class UsersTest extends SingleEndpointCommon {
      * Send a GET request to /users. Validate that response
      * has HTTP status code 200 and Content Type JSON
      *********************************************************/
+
     @Test
     public void testResponseStatusCode200AndContentTypeJSON() {
         log.info(VALIDATE_STATUS_CODE_200_AND_CONTENT_TYPE_JSON + usersEndpoint);
@@ -40,26 +53,22 @@ public class UsersTest extends SingleEndpointCommon {
     /***********************************************************
      * Send a GET request to /users. Validate that
      * - response body contains 10 users
-     * - response has HTTP status code 200 and Content Type JSON
      ***********************************************************/
+
     @Test(dependsOnMethods = "testResponseStatusCode200AndContentTypeJSON")
     public void fetchListOfUsersAndAssertSize() {
         log.info(VALIDATE_LIST_OF_ITEM + usersEndpoint);
-        given().
-                spec(requestSpecification).
-                when().
-                get(usersEndpoint).
-                then().
-                assertThat().
-                body("$", hasSize(10)).
-                and().
-                spec(responseSpecification);
+
+        AllUsers allUsers = AllUsersBusinessLogic.getAllUsers();
+        List<SingleUser> allUsersList = allUsers.getListOfUsers();
+        Assert.assertEquals(allUsersList.size(), 10);
     }
 
     /************************************************************
      * Send a GET request to /users/{users} and Validate
      * - response has HTTP status code 200 & Content Type is JSON
      ***********************************************************/
+
     @Test(dataProvider = "validId", dataProviderClass = CommonDataProvider.class)
     public void testResponseCodeAndContentType(int id) {
         log.info(VALIDATE_STATUS_CODE_200_AND_CONTENT_TYPE_JSON + usersEndpoint + id);
@@ -75,6 +84,7 @@ public class UsersTest extends SingleEndpointCommon {
      * Send a GET request to /users/{users} and Validate
      * - response returns the expected id, name, username, email, phone & website
      *****************************************************************************/
+
     @Test(dependsOnMethods = {"testResponseCodeAndContentType"},
             dataProvider = "validUserIdWithNameUsernameEmailPhoneAndWebsite",
             dataProviderClass = UserDataProvider.class)
@@ -99,6 +109,7 @@ public class UsersTest extends SingleEndpointCommon {
      * Send a GET request to /users/{usersId} with invalid usersId
      * Validate that response has HTTP status code 404
      **************************************************************/
+
     @Test(dataProvider = "invalidId", dataProviderClass = CommonDataProvider.class)
     public void testResponseCodeWithInvalidUsersId(int id) {
         log.info(VALIDATE_STATUS_CODE_404 + usersEndpoint + id);

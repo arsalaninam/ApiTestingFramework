@@ -1,8 +1,10 @@
 package com.freenow.testcase.singleEndpoint.comment;
 
+import com.freenow.businesslayer.comment.AllCommentsBusinessLogic;
 import com.freenow.businesslayer.comment.SingleCommentBusinessLogic;
 import com.freenow.data.dataprovider.CommentDataProvider;
 import com.freenow.data.dataprovider.CommonDataProvider;
+import com.freenow.pojo.comment.AllComments;
 import com.freenow.pojo.comment.SingleComment;
 import com.freenow.testcase.singleEndpoint.SingleEndpointCommon;
 import io.restassured.response.Response;
@@ -11,11 +13,21 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 import static com.freenow.constant.ResponseCodeConstant.STATUS_CODE_404;
 import static com.freenow.constant.ScenarioNameConstant.*;
 import static com.freenow.constant.ServiceConstant.COMMENTS_ENDPOINT;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.hasSize;
+
+/**
+ * Test Class to perform Comments Endpoint test cases
+ * Endpoints that are used in the following Test Class are
+ * - https://<domain>/comments
+ * - https://<domain>/comments/{id}
+ *
+ * @author Arsalan Inam
+ */
 
 public class CommentsTest extends SingleEndpointCommon {
 
@@ -26,6 +38,7 @@ public class CommentsTest extends SingleEndpointCommon {
      * Send a GET request to /comments. Validate that response
      * has HTTP status code 200 and Content Type JSON
      *********************************************************/
+
     @Test
     public void testResponseStatusCode200AndContentTypeJSON() {
         log.info(VALIDATE_STATUS_CODE_200_AND_CONTENT_TYPE_JSON + commentsEndpoint);
@@ -40,26 +53,22 @@ public class CommentsTest extends SingleEndpointCommon {
     /***********************************************************
      * Send a GET request to /comments. Validate that
      * - response body contains list of 500 comments
-     * - response has HTTP status code 200 and Content Type JSON
      ***********************************************************/
+
     @Test(dependsOnMethods = "testResponseStatusCode200AndContentTypeJSON")
     public void fetchListOfCommentsAndAssertSize() {
         log.info(VALIDATE_LIST_OF_ITEM + commentsEndpoint);
-        given().
-                spec(requestSpecification).
-                when().
-                get(commentsEndpoint).
-                then().
-                assertThat().
-                body("$", hasSize(500)).
-                and().
-                spec(responseSpecification);
+
+        AllComments allComments = AllCommentsBusinessLogic.getAllComments();
+        List<SingleComment> allCommentsList = allComments.getListOfComments();
+        Assert.assertEquals(allCommentsList.size(), 500);
     }
 
     /************************************************************
      * Send a GET request to /comments/{commentsId} and Validate
      * - response has HTTP status code 200 & Content Type is JSON
      ***********************************************************/
+
     @Test(dataProvider = "validId", dataProviderClass = CommonDataProvider.class)
     public void testResponseCodeAndContentType(int id) {
         log.info(VALIDATE_STATUS_CODE_200_AND_CONTENT_TYPE_JSON + commentsEndpoint + id);
@@ -75,6 +84,7 @@ public class CommentsTest extends SingleEndpointCommon {
      * Send a GET request to /comments/{commentsId} and Validate
      * - response returns the expected id, name, email & body
      ***********************************************************/
+
     @Test(dependsOnMethods = {"testResponseCodeAndContentType"},
             dataProvider = "validCommentsIdWithNameAndEmail",
             dataProviderClass = CommentDataProvider.class)
@@ -94,6 +104,7 @@ public class CommentsTest extends SingleEndpointCommon {
      * Send a GET request to /comments/{commentsId} with invalid commentsId
      * Validate that response has HTTP status code 404
      **********************************************************************/
+
     @Test(dataProvider = "invalidId", dataProviderClass = CommonDataProvider.class)
     public void testResponseCodeWithInvalidCommentsId(int id) {
         log.info(VALIDATE_STATUS_CODE_404 + commentsEndpoint + id);
@@ -103,5 +114,4 @@ public class CommentsTest extends SingleEndpointCommon {
                 get(commentsEndpoint + id);
         Assert.assertEquals(response.statusCode(), STATUS_CODE_404);
     }
-
 }
