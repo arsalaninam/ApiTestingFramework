@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Classes">
+    <test name="Execute All Test Cases">
+        <classes>
+            <class name="com.freenow.testcase.singleEndpoint.comment.CommentsTest"/>
+            <class name="com.freenow.testcase.singleEndpoint.album.AlbumsTest"/>
+            <class name="com.freenow.testcase.singleEndpoint.photo.PhotosTest"/>
+            <class name="com.freenow.testcase.singleEndpoint.post.PostsTest"/>
+            <class name="com.freenow.testcase.singleEndpoint.todo.TodosTest"/>
+            <class name="com.freenow.testcase.singleEndpoint.user.UsersTest"/>
+            <class name="com.freenow.testcase.multipleEndpoints.comments.CommentsOfPostsByUserTest"/>
+            <class name="com.freenow.testcase.multipleEndpoints.albums.AlbumsOfUserTest"/>
+            <class name="com.freenow.testcase.multipleEndpoints.photos.PhotosInAlbumsByUserTest"/>
+            <class name="com.freenow.testcase.multipleEndpoints.posts.PostsByUserTest"/>
+            <class name="com.freenow.testcase.multipleEndpoints.todos.TodosByUserTest"/>
+        </classes>
+    </test>
+</suite>
