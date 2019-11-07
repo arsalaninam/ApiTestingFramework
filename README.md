@@ -37,6 +37,10 @@ This Framework is designed for API Testing of Webservices using Java with RestAs
 
 ## Getting Started
 
+We are using JSONPlaceholder APIs as Application Under Test.
+
+* URL : https://jsonplaceholder.typicode.com
+
 Following instructions will help you running the project. First of all, checkout/clone this project from master branch on your local machine.
 
 ### Installation
