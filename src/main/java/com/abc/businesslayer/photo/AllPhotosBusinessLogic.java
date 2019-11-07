@@ -1,8 +1,8 @@
-package com.freenow.businesslayer.photo;
+package com.abc.businesslayer.photo;
 
-import com.freenow.pojo.photo.AllPhotos;
-import com.freenow.pojo.photo.SinglePhoto;
-import com.freenow.util.PropertyReader;
+import com.abc.pojo.photo.AllPhotos;
+import com.abc.pojo.photo.SinglePhoto;
+import com.abc.util.PropertyReader;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.freenow.constant.ServiceConstant.*;
+import static com.abc.constant.ServiceConstant.*;
 import static io.restassured.RestAssured.when;
 
 public class AllPhotosBusinessLogic extends PropertyReader {

@@ -1,12 +1,12 @@
-package com.freenow.testcase.singleEndpoint.comment;
+package com.abc.testcase.singleEndpoint.comment;
 
-import com.freenow.businesslayer.comment.AllCommentsBusinessLogic;
-import com.freenow.businesslayer.comment.SingleCommentBusinessLogic;
-import com.freenow.data.dataprovider.CommentDataProvider;
-import com.freenow.data.dataprovider.CommonDataProvider;
-import com.freenow.pojo.comment.AllComments;
-import com.freenow.pojo.comment.SingleComment;
-import com.freenow.testcase.singleEndpoint.SingleEndpointCommon;
+import com.abc.businesslayer.comment.AllCommentsBusinessLogic;
+import com.abc.businesslayer.comment.SingleCommentBusinessLogic;
+import com.abc.data.dataprovider.CommentDataProvider;
+import com.abc.data.dataprovider.CommonDataProvider;
+import com.abc.pojo.comment.AllComments;
+import com.abc.pojo.comment.SingleComment;
+import com.abc.testcase.singleEndpoint.SingleEndpointCommon;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +15,9 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static com.freenow.constant.ResponseCodeConstant.STATUS_CODE_404;
-import static com.freenow.constant.ScenarioNameConstant.*;
-import static com.freenow.constant.ServiceConstant.COMMENTS_ENDPOINT;
+import static com.abc.constant.ResponseCodeConstant.STATUS_CODE_404;
+import static com.abc.constant.ScenarioNameConstant.*;
+import static com.abc.constant.ServiceConstant.COMMENTS_ENDPOINT;
 import static io.restassured.RestAssured.given;
 
 /**

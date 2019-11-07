@@ -1,8 +1,8 @@
-package com.freenow.businesslayer.user;
+package com.abc.businesslayer.user;
 
-import com.freenow.pojo.user.AllUsers;
-import com.freenow.pojo.user.SingleUser;
-import com.freenow.util.PropertyReader;
+import com.abc.pojo.user.AllUsers;
+import com.abc.pojo.user.SingleUser;
+import com.abc.util.PropertyReader;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.freenow.constant.ServiceConstant.BASE_URL;
-import static com.freenow.constant.ServiceConstant.USERS_ENDPOINT;
+import static com.abc.constant.ServiceConstant.BASE_URL;
+import static com.abc.constant.ServiceConstant.USERS_ENDPOINT;
 import static io.restassured.RestAssured.when;
 
 public class AllUsersBusinessLogic extends PropertyReader {

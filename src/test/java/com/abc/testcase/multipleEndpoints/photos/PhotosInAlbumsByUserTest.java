@@ -1,16 +1,16 @@
-package com.freenow.testcase.multipleEndpoints.photos;
+package com.abc.testcase.multipleEndpoints.photos;
 
-import com.freenow.businesslayer.album.AllAlbumsBusinessLogic;
-import com.freenow.businesslayer.photo.AllPhotosBusinessLogic;
-import com.freenow.businesslayer.user.SingleUserBusinessLogic;
-import com.freenow.data.dataprovider.UserDataProvider;
-import com.freenow.pojo.album.AllAlbums;
-import com.freenow.pojo.album.SingleAlbum;
-import com.freenow.pojo.photo.AllPhotos;
-import com.freenow.pojo.photo.SinglePhoto;
-import com.freenow.pojo.user.SingleUser;
-import com.freenow.util.ObjectFactory;
-import com.freenow.util.PropertyReader;
+import com.abc.businesslayer.album.AllAlbumsBusinessLogic;
+import com.abc.businesslayer.photo.AllPhotosBusinessLogic;
+import com.abc.businesslayer.user.SingleUserBusinessLogic;
+import com.abc.data.dataprovider.UserDataProvider;
+import com.abc.pojo.album.AllAlbums;
+import com.abc.pojo.album.SingleAlbum;
+import com.abc.pojo.photo.AllPhotos;
+import com.abc.pojo.photo.SinglePhoto;
+import com.abc.pojo.user.SingleUser;
+import com.abc.util.ObjectFactory;
+import com.abc.util.PropertyReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
@@ -18,8 +18,8 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
-import static com.freenow.constant.ScenarioNameConstant.VALIDATE_URL_FORMAT_IN_PHOTOS_FOR_ALBUMS_ASSOCIATED_WITH_USER;
-import static com.freenow.util.Matcher.isValidURL;
+import static com.abc.constant.ScenarioNameConstant.VALIDATE_URL_FORMAT_IN_PHOTOS_FOR_ALBUMS_ASSOCIATED_WITH_USER;
+import static com.abc.util.Matcher.isValidURL;
 
 /**
  * Test Class to perform all the Photos related test cases that are in Albums associated with a User

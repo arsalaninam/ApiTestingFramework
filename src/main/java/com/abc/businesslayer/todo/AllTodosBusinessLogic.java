@@ -1,8 +1,8 @@
-package com.freenow.businesslayer.todo;
+package com.abc.businesslayer.todo;
 
-import com.freenow.pojo.todo.AllTodos;
-import com.freenow.pojo.todo.SingleTodo;
-import com.freenow.util.PropertyReader;
+import com.abc.pojo.todo.AllTodos;
+import com.abc.pojo.todo.SingleTodo;
+import com.abc.util.PropertyReader;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.freenow.constant.ServiceConstant.*;
+import static com.abc.constant.ServiceConstant.*;
 import static io.restassured.RestAssured.when;
 
 public class AllTodosBusinessLogic extends PropertyReader {

@@ -1,13 +1,13 @@
-package com.freenow.testcase.multipleEndpoints.posts;
+package com.abc.testcase.multipleEndpoints.posts;
 
-import com.freenow.businesslayer.post.AllPostsBusinessLogic;
-import com.freenow.businesslayer.user.SingleUserBusinessLogic;
-import com.freenow.data.dataprovider.CommonDataProvider;
-import com.freenow.pojo.post.AllPosts;
-import com.freenow.pojo.post.SinglePost;
-import com.freenow.pojo.user.SingleUser;
-import com.freenow.util.ObjectFactory;
-import com.freenow.util.PropertyReader;
+import com.abc.businesslayer.post.AllPostsBusinessLogic;
+import com.abc.businesslayer.user.SingleUserBusinessLogic;
+import com.abc.data.dataprovider.CommonDataProvider;
+import com.abc.pojo.post.AllPosts;
+import com.abc.pojo.post.SinglePost;
+import com.abc.pojo.user.SingleUser;
+import com.abc.util.ObjectFactory;
+import com.abc.util.PropertyReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
-import static com.freenow.constant.ScenarioNameConstant.VALIDATE_TOTAL_NUMBER_OF_POSTS_MADE_BY_USER_WITH_RESPONSE_BODY;
+import static com.abc.constant.ScenarioNameConstant.VALIDATE_TOTAL_NUMBER_OF_POSTS_MADE_BY_USER_WITH_RESPONSE_BODY;
 
 /**
  * Test Class to perform all the Posts related test cases that are associated with a User

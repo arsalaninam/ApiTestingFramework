@@ -1,4 +1,4 @@
-package com.freenow.pojo.user;
+package com.abc.pojo.user;
 
 import lombok.Getter;
 import lombok.Setter;

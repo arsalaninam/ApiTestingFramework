@@ -1,13 +1,13 @@
-package com.freenow.businesslayer.album;
+package com.abc.businesslayer.album;
 
-import com.freenow.pojo.album.SingleAlbum;
-import com.freenow.util.PropertyReader;
+import com.abc.pojo.album.SingleAlbum;
+import com.abc.util.PropertyReader;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.freenow.constant.ServiceConstant.ALBUMS_ENDPOINT;
-import static com.freenow.constant.ServiceConstant.BASE_URL;
+import static com.abc.constant.ServiceConstant.ALBUMS_ENDPOINT;
+import static com.abc.constant.ServiceConstant.BASE_URL;
 import static io.restassured.RestAssured.when;
 
 public class SingleAlbumBusinessLogic extends PropertyReader {

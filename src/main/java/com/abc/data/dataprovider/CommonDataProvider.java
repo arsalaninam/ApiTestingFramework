@@ -1,4 +1,4 @@
-package com.freenow.data.dataprovider;
+package com.abc.data.dataprovider;
 
 import org.testng.annotations.DataProvider;
 

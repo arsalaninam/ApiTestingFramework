@@ -1,12 +1,12 @@
-package com.freenow.testcase.singleEndpoint.photo;
+package com.abc.testcase.singleEndpoint.photo;
 
-import com.freenow.businesslayer.photo.AllPhotosBusinessLogic;
-import com.freenow.businesslayer.photo.SinglePhotoBusinessLogic;
-import com.freenow.data.dataprovider.CommonDataProvider;
-import com.freenow.data.dataprovider.PhotoDataProvider;
-import com.freenow.pojo.photo.AllPhotos;
-import com.freenow.pojo.photo.SinglePhoto;
-import com.freenow.testcase.singleEndpoint.SingleEndpointCommon;
+import com.abc.businesslayer.photo.AllPhotosBusinessLogic;
+import com.abc.businesslayer.photo.SinglePhotoBusinessLogic;
+import com.abc.data.dataprovider.CommonDataProvider;
+import com.abc.data.dataprovider.PhotoDataProvider;
+import com.abc.pojo.photo.AllPhotos;
+import com.abc.pojo.photo.SinglePhoto;
+import com.abc.testcase.singleEndpoint.SingleEndpointCommon;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +15,9 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static com.freenow.constant.ResponseCodeConstant.STATUS_CODE_404;
-import static com.freenow.constant.ScenarioNameConstant.*;
-import static com.freenow.constant.ServiceConstant.PHOTOS_ENDPOINT;
+import static com.abc.constant.ResponseCodeConstant.STATUS_CODE_404;
+import static com.abc.constant.ScenarioNameConstant.*;
+import static com.abc.constant.ServiceConstant.PHOTOS_ENDPOINT;
 import static io.restassured.RestAssured.given;
 
 /**

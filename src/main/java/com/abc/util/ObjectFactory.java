@@ -1,4 +1,4 @@
-package com.freenow.util;
+package com.abc.util;
 
 import org.testng.asserts.SoftAssert;
 

@@ -1,14 +1,14 @@
-package com.freenow.testcase.multipleEndpoints.todos;
+package com.abc.testcase.multipleEndpoints.todos;
 
-import com.freenow.businesslayer.todo.AllTodosBusinessLogic;
-import com.freenow.businesslayer.user.SingleUserBusinessLogic;
-import com.freenow.data.dataprovider.CommonDataProvider;
-import com.freenow.pojo.todo.AllTodos;
-import com.freenow.pojo.todo.SingleTodo;
-import com.freenow.pojo.user.SingleUser;
-import com.freenow.testcase.multipleEndpoints.posts.PostsByUserTest;
-import com.freenow.util.ObjectFactory;
-import com.freenow.util.PropertyReader;
+import com.abc.businesslayer.todo.AllTodosBusinessLogic;
+import com.abc.businesslayer.user.SingleUserBusinessLogic;
+import com.abc.data.dataprovider.CommonDataProvider;
+import com.abc.pojo.todo.AllTodos;
+import com.abc.pojo.todo.SingleTodo;
+import com.abc.pojo.user.SingleUser;
+import com.abc.testcase.multipleEndpoints.posts.PostsByUserTest;
+import com.abc.util.ObjectFactory;
+import com.abc.util.PropertyReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
-import static com.freenow.constant.ScenarioNameConstant.VALIDATE_TOTAL_NUMBER_OF_TODOS_ASSOCIATED_WITH_USER;
+import static com.abc.constant.ScenarioNameConstant.VALIDATE_TOTAL_NUMBER_OF_TODOS_ASSOCIATED_WITH_USER;
 
 /**
  * Test Class to perform all the Todos related test cases that are associated with a User

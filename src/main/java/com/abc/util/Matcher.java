@@ -1,4 +1,4 @@
-package com.freenow.util;
+package com.abc.util;
 
 import java.net.MalformedURLException;
 import java.net.URL;

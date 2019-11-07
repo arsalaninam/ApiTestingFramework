@@ -1,13 +1,13 @@
-package com.freenow.businesslayer.todo;
+package com.abc.businesslayer.todo;
 
-import com.freenow.pojo.todo.SingleTodo;
-import com.freenow.util.PropertyReader;
+import com.abc.pojo.todo.SingleTodo;
+import com.abc.util.PropertyReader;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.freenow.constant.ServiceConstant.BASE_URL;
-import static com.freenow.constant.ServiceConstant.TODOS_ENDPOINT;
+import static com.abc.constant.ServiceConstant.BASE_URL;
+import static com.abc.constant.ServiceConstant.TODOS_ENDPOINT;
 import static io.restassured.RestAssured.when;
 
 public class SingleTodoBusinessLogic extends PropertyReader {

@@ -1,4 +1,4 @@
-package com.freenow.constant;
+package com.abc.constant;
 
 public interface ResponseCodeConstant {
 

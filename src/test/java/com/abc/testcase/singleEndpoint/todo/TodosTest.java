@@ -1,12 +1,12 @@
-package com.freenow.testcase.singleEndpoint.todo;
+package com.abc.testcase.singleEndpoint.todo;
 
-import com.freenow.businesslayer.todo.AllTodosBusinessLogic;
-import com.freenow.businesslayer.todo.SingleTodoBusinessLogic;
-import com.freenow.data.dataprovider.CommonDataProvider;
-import com.freenow.data.dataprovider.TodoDataProvider;
-import com.freenow.pojo.todo.AllTodos;
-import com.freenow.pojo.todo.SingleTodo;
-import com.freenow.testcase.singleEndpoint.SingleEndpointCommon;
+import com.abc.businesslayer.todo.AllTodosBusinessLogic;
+import com.abc.businesslayer.todo.SingleTodoBusinessLogic;
+import com.abc.data.dataprovider.CommonDataProvider;
+import com.abc.data.dataprovider.TodoDataProvider;
+import com.abc.pojo.todo.AllTodos;
+import com.abc.pojo.todo.SingleTodo;
+import com.abc.testcase.singleEndpoint.SingleEndpointCommon;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +15,9 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static com.freenow.constant.ResponseCodeConstant.STATUS_CODE_404;
-import static com.freenow.constant.ScenarioNameConstant.*;
-import static com.freenow.constant.ServiceConstant.TODOS_ENDPOINT;
+import static com.abc.constant.ResponseCodeConstant.STATUS_CODE_404;
+import static com.abc.constant.ScenarioNameConstant.*;
+import static com.abc.constant.ServiceConstant.TODOS_ENDPOINT;
 import static io.restassured.RestAssured.given;
 
 /**

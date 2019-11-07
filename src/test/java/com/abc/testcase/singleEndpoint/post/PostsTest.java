@@ -1,12 +1,12 @@
-package com.freenow.testcase.singleEndpoint.post;
+package com.abc.testcase.singleEndpoint.post;
 
-import com.freenow.businesslayer.post.AllPostsBusinessLogic;
-import com.freenow.businesslayer.post.SinglePostBusinessLogic;
-import com.freenow.data.dataprovider.CommonDataProvider;
-import com.freenow.data.dataprovider.PostDataProvider;
-import com.freenow.pojo.post.AllPosts;
-import com.freenow.pojo.post.SinglePost;
-import com.freenow.testcase.singleEndpoint.SingleEndpointCommon;
+import com.abc.businesslayer.post.AllPostsBusinessLogic;
+import com.abc.businesslayer.post.SinglePostBusinessLogic;
+import com.abc.data.dataprovider.CommonDataProvider;
+import com.abc.data.dataprovider.PostDataProvider;
+import com.abc.pojo.post.AllPosts;
+import com.abc.pojo.post.SinglePost;
+import com.abc.testcase.singleEndpoint.SingleEndpointCommon;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +15,9 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static com.freenow.constant.ResponseCodeConstant.STATUS_CODE_404;
-import static com.freenow.constant.ScenarioNameConstant.*;
-import static com.freenow.constant.ServiceConstant.POSTS_ENDPOINT;
+import static com.abc.constant.ResponseCodeConstant.STATUS_CODE_404;
+import static com.abc.constant.ScenarioNameConstant.*;
+import static com.abc.constant.ServiceConstant.POSTS_ENDPOINT;
 import static io.restassured.RestAssured.given;
 
 /**

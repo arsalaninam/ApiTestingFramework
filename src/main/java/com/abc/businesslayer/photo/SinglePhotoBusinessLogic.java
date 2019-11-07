@@ -1,13 +1,13 @@
-package com.freenow.businesslayer.photo;
+package com.abc.businesslayer.photo;
 
-import com.freenow.pojo.photo.SinglePhoto;
-import com.freenow.util.PropertyReader;
+import com.abc.pojo.photo.SinglePhoto;
+import com.abc.util.PropertyReader;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.freenow.constant.ServiceConstant.BASE_URL;
-import static com.freenow.constant.ServiceConstant.PHOTOS_ENDPOINT;
+import static com.abc.constant.ServiceConstant.BASE_URL;
+import static com.abc.constant.ServiceConstant.PHOTOS_ENDPOINT;
 import static io.restassured.RestAssured.when;
 
 public class SinglePhotoBusinessLogic extends PropertyReader {

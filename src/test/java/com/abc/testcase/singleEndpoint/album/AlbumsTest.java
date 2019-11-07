@@ -1,12 +1,12 @@
-package com.freenow.testcase.singleEndpoint.album;
+package com.abc.testcase.singleEndpoint.album;
 
-import com.freenow.businesslayer.album.AllAlbumsBusinessLogic;
-import com.freenow.businesslayer.album.SingleAlbumBusinessLogic;
-import com.freenow.data.dataprovider.AlbumDataProvider;
-import com.freenow.data.dataprovider.CommonDataProvider;
-import com.freenow.pojo.album.AllAlbums;
-import com.freenow.pojo.album.SingleAlbum;
-import com.freenow.testcase.singleEndpoint.SingleEndpointCommon;
+import com.abc.businesslayer.album.AllAlbumsBusinessLogic;
+import com.abc.businesslayer.album.SingleAlbumBusinessLogic;
+import com.abc.data.dataprovider.AlbumDataProvider;
+import com.abc.data.dataprovider.CommonDataProvider;
+import com.abc.pojo.album.AllAlbums;
+import com.abc.pojo.album.SingleAlbum;
+import com.abc.testcase.singleEndpoint.SingleEndpointCommon;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +15,9 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static com.freenow.constant.ResponseCodeConstant.STATUS_CODE_404;
-import static com.freenow.constant.ScenarioNameConstant.*;
-import static com.freenow.constant.ServiceConstant.ALBUMS_ENDPOINT;
+import static com.abc.constant.ResponseCodeConstant.STATUS_CODE_404;
+import static com.abc.constant.ScenarioNameConstant.*;
+import static com.abc.constant.ServiceConstant.ALBUMS_ENDPOINT;
 import static io.restassured.RestAssured.given;
 
 /**

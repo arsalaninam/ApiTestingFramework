@@ -1,7 +1,7 @@
-package com.freenow.testcase.singleEndpoint;
+package com.abc.testcase.singleEndpoint;
 
-import com.freenow.util.ObjectFactory;
-import com.freenow.util.PropertyReader;
+import com.abc.util.ObjectFactory;
+import com.abc.util.PropertyReader;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
@@ -10,8 +10,8 @@ import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.BeforeClass;
 import org.testng.asserts.SoftAssert;
 
-import static com.freenow.constant.ResponseCodeConstant.STATUS_CODE_200;
-import static com.freenow.constant.ServiceConstant.BASE_URL;
+import static com.abc.constant.ResponseCodeConstant.STATUS_CODE_200;
+import static com.abc.constant.ServiceConstant.BASE_URL;
 
 public class SingleEndpointCommon extends PropertyReader {
 

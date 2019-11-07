@@ -1,4 +1,4 @@
-package com.freenow.pojo.todo;
+package com.abc.pojo.todo;
 
 import lombok.Getter;
 import lombok.Setter;

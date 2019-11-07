@@ -1,13 +1,13 @@
-package com.freenow.testcase.multipleEndpoints.albums;
+package com.abc.testcase.multipleEndpoints.albums;
 
-import com.freenow.businesslayer.album.AllAlbumsBusinessLogic;
-import com.freenow.businesslayer.user.SingleUserBusinessLogic;
-import com.freenow.data.dataprovider.CommonDataProvider;
-import com.freenow.pojo.album.AllAlbums;
-import com.freenow.pojo.album.SingleAlbum;
-import com.freenow.pojo.user.SingleUser;
-import com.freenow.util.ObjectFactory;
-import com.freenow.util.PropertyReader;
+import com.abc.businesslayer.album.AllAlbumsBusinessLogic;
+import com.abc.businesslayer.user.SingleUserBusinessLogic;
+import com.abc.data.dataprovider.CommonDataProvider;
+import com.abc.pojo.album.AllAlbums;
+import com.abc.pojo.album.SingleAlbum;
+import com.abc.pojo.user.SingleUser;
+import com.abc.util.ObjectFactory;
+import com.abc.util.PropertyReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
-import static com.freenow.constant.ScenarioNameConstant.VALIDATE_TOTAL_NUMBER_OF_ALBUMS_ASSOCIATED_WITH_USER;
+import static com.abc.constant.ScenarioNameConstant.VALIDATE_TOTAL_NUMBER_OF_ALBUMS_ASSOCIATED_WITH_USER;
 
 /**
  * Test Class to perform all the Albums related test cases that are associated with a User

@@ -1,4 +1,4 @@
-package com.freenow.pojo.comment;
+package com.abc.pojo.comment;
 
 import lombok.Getter;
 import lombok.Setter;

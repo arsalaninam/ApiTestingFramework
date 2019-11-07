@@ -1,7 +1,7 @@
-package com.freenow.pojo.user;
+package com.abc.pojo.user;
 
-import com.freenow.pojo.address.Address;
-import com.freenow.pojo.company.Company;
+import com.abc.pojo.address.Address;
+import com.abc.pojo.company.Company;
 import lombok.Getter;
 import lombok.Setter;
 

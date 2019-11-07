@@ -1,13 +1,13 @@
-package com.freenow.businesslayer.post;
+package com.abc.businesslayer.post;
 
-import com.freenow.pojo.post.SinglePost;
-import com.freenow.util.PropertyReader;
+import com.abc.pojo.post.SinglePost;
+import com.abc.util.PropertyReader;
 import io.restassured.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.freenow.constant.ServiceConstant.BASE_URL;
-import static com.freenow.constant.ServiceConstant.POSTS_ENDPOINT;
+import static com.abc.constant.ServiceConstant.BASE_URL;
+import static com.abc.constant.ServiceConstant.POSTS_ENDPOINT;
 import static io.restassured.RestAssured.when;
 
 public class SinglePostBusinessLogic extends PropertyReader {

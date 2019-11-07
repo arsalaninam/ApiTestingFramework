@@ -1,6 +1,6 @@
-package com.freenow.pojo.address;
+package com.abc.pojo.address;
 
-import com.freenow.pojo.geo.Geo;
+import com.abc.pojo.geo.Geo;
 import lombok.Getter;
 import lombok.Setter;
 

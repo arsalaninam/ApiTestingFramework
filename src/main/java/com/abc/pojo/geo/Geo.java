@@ -1,4 +1,4 @@
-package com.freenow.pojo.geo;
+package com.abc.pojo.geo;
 
 import lombok.Getter;
 import lombok.Setter;
