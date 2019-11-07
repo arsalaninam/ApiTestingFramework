@@ -1,6 +1,6 @@
 # API Testing Framework
 
-This Framework is designed for API Testing of Webservices using Java with RestAssured and TestNG utilizing Maven as dependency management tool. Data Driven Test strategy is used to design and execute tests utilizing TestNG Data Providers.
+This Framework is designed for Backend Testing of Webservices using Java with RestAssured and TestNG utilizing Maven as dependency management tool. Data Driven Test strategy is used to design and execute tests utilizing TestNG Data Providers.
 
 ## Technology Stack
 
