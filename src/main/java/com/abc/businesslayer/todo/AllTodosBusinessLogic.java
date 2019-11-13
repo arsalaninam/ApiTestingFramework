@@ -25,14 +25,10 @@ public class AllTodosBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String todosEndpoint = prop.getProperty(TODOS_ENDPOINT);
         String url = baseUrl + todosEndpoint;
-        log.info("URL to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         Response response = when().get(url);
-        List<SingleTodo> allSingleTodos = Arrays.asList(response.getBody().as(SingleTodo[].class));
-
-        AllTodos allTodos = new AllTodos();
-        allTodos.setListOfTodos(allSingleTodos);
-        return allTodos;
+        return getTodos(response);
     }
 
     /**
@@ -43,9 +39,13 @@ public class AllTodosBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String todosEndpointQueryParamUserId = prop.getProperty(TODOS_ENDPOINT_QUERY_PARAM_USER_ID);
         String url = baseUrl + todosEndpointQueryParamUserId + userId;
-        log.info("URL to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         Response response = when().get(url);
+        return getTodos(response);
+    }
+
+    private static AllTodos getTodos(Response response) {
         List<SingleTodo> allSingleTodos = Arrays.asList(response.getBody().as(SingleTodo[].class));
 
         AllTodos allTodos = new AllTodos();

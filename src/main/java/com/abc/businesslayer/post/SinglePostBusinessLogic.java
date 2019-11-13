@@ -25,11 +25,11 @@ public class SinglePostBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String postsEndpoint = prop.getProperty(POSTS_ENDPOINT);
         String url = baseUrl + postsEndpoint + id;
-        log.info("API to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         Response response = when().get(url);
         SinglePost singlePost = response.getBody().as(SinglePost.class);
-        log.info("Info: " + singlePost);
+        log.info("Info : " + singlePost);
         return singlePost;
     }
 }

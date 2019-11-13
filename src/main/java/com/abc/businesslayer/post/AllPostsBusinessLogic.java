@@ -28,11 +28,7 @@ public class AllPostsBusinessLogic extends PropertyReader {
         log.info("URL to be hit:" + url);
 
         Response response = when().get(url);
-        List<SinglePost> allSinglePosts = Arrays.asList(response.getBody().as(SinglePost[].class));
-
-        AllPosts allPosts = new AllPosts();
-        allPosts.setListOfPosts(allSinglePosts);
-        return allPosts;
+        return getPosts(response);
     }
 
     /**
@@ -43,9 +39,13 @@ public class AllPostsBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String postsEndpointQueryParamUserId = prop.getProperty(POSTS_ENDPOINT_QUERY_PARAM_USERS_ID);
         String url = baseUrl + postsEndpointQueryParamUserId + userId;
-        log.info("URL to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         Response response = when().get(url);
+        return getPosts(response);
+    }
+
+    private static AllPosts getPosts(Response response){
         List<SinglePost> allSinglePosts = Arrays.asList(response.getBody().as(SinglePost[].class));
 
         AllPosts allPosts = new AllPosts();

@@ -25,11 +25,11 @@ public class SingleTodoBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String todosEndpoint = prop.getProperty(TODOS_ENDPOINT);
         String url = baseUrl + todosEndpoint + id;
-        log.info("API to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         Response response = when().get(url);
         SingleTodo SingleTodo = response.getBody().as(SingleTodo.class);
-        log.info("Info: " + SingleTodo);
+        log.info("Info : " + SingleTodo);
         return SingleTodo;
     }
 }

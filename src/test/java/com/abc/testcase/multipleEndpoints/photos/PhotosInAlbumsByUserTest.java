@@ -13,6 +13,7 @@ import com.abc.util.ObjectFactory;
 import com.abc.util.PropertyReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -52,20 +53,20 @@ public class PhotosInAlbumsByUserTest extends PropertyReader {
 
         SingleUser singleUser = SingleUserBusinessLogic.getSingleUserByUserName(username);
         log.info("Username : " + username);
-        softAssert.assertNotNull(singleUser);
+        Assert.assertNotNull(singleUser);
         int userId = singleUser.getId();
         log.info("User Id: " + userId);
 
         AllAlbums allAlbumsFromUserId = AllAlbumsBusinessLogic.getAllAlbumsForUserId(userId);
         List<SingleAlbum> allAlbumsList = allAlbumsFromUserId.getListOfAlbums();
-        softAssert.assertNotNull(allAlbumsList);
+        Assert.assertNotNull(allAlbumsList);
 
         for (SingleAlbum singleAlbum : allAlbumsList) {
             int albumId = singleAlbum.getId();
 
             AllPhotos allPhotosForAlbumId = AllPhotosBusinessLogic.getAllPhotosForAlbumId(albumId);
             List<SinglePhoto> allPhotosList = allPhotosForAlbumId.getListOfPhotos();
-            softAssert.assertNotNull(allPhotosList);
+            Assert.assertNotNull(allPhotosList);
 
             for (SinglePhoto singlePhoto : allPhotosList) {
 

@@ -15,4 +15,5 @@ public interface ServiceConstant {
     String ALBUMS_ENDPOINT_QUERY_PARAM_USER_ID = "albumsEndpointWithUserIdAsQueryParam";
     String PHOTOS_ENDPOINT_QUERY_PARAM_ALBUM_ID = "photosEndpointWithAlbumIdAsQueryParam";
     String TODOS_ENDPOINT_QUERY_PARAM_USER_ID = "todosEndpointWithUserIdAsQueryParam";
+
 }

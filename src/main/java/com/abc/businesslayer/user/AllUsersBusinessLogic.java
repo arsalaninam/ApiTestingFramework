@@ -26,7 +26,7 @@ public class AllUsersBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String usersEndpoint = prop.getProperty(USERS_ENDPOINT);
         String url = baseUrl + usersEndpoint;
-        log.info("URL to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         Response response = when().get(url);
         List<SingleUser> usersList = Arrays.asList(response.getBody().as(SingleUser[].class));

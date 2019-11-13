@@ -25,11 +25,11 @@ public class SingleAlbumBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String albumsEndpoint = prop.getProperty(ALBUMS_ENDPOINT);
         String url = baseUrl + albumsEndpoint + id;
-        log.info("API to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         Response response = when().get(url);
         SingleAlbum singleAlbum = response.getBody().as(SingleAlbum.class);
-        log.info("Info: " + singleAlbum);
+        log.info("Info : " + singleAlbum);
         return singleAlbum;
     }
 }
