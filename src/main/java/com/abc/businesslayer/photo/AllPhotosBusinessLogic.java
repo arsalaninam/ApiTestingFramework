@@ -25,14 +25,10 @@ public class AllPhotosBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String photosEndpoint = prop.getProperty(PHOTOS_ENDPOINT);
         String url = baseUrl + photosEndpoint;
-        log.info("URL to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         Response response = when().get(url);
-        List<SinglePhoto> allSinglePhotos = Arrays.asList(response.getBody().as(SinglePhoto[].class));
-
-        AllPhotos allPhotos = new AllPhotos();
-        allPhotos.setListOfPhotos(allSinglePhotos);
-        return allPhotos;
+        return getPhotos(response);
     }
 
     /**
@@ -43,9 +39,13 @@ public class AllPhotosBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String photosEndpointQueryParamAlbumId = prop.getProperty(PHOTOS_ENDPOINT_QUERY_PARAM_ALBUM_ID);
         String url = baseUrl + photosEndpointQueryParamAlbumId + albumId;
-        log.info("URL to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         Response response = when().get(url);
+        return getPhotos(response);
+    }
+
+    private static AllPhotos getPhotos(Response response){
         List<SinglePhoto> allSinglePhotos = Arrays.asList(response.getBody().as(SinglePhoto[].class));
 
         AllPhotos allPhotos = new AllPhotos();

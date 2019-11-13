@@ -28,11 +28,7 @@ public class AllCommentsBusinessLogic extends PropertyReader {
         log.info("URL to be hit:" + url);
 
         Response response = when().get(url);
-        List<SingleComment> allSingleComments = Arrays.asList(response.getBody().as(SingleComment[].class));
-
-        AllComments allComments = new AllComments();
-        allComments.setListOfComments(allSingleComments);
-        return allComments;
+        return getComments(response);
     }
 
     /**
@@ -43,9 +39,13 @@ public class AllCommentsBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String commentsEndpointQueryParamPostId = prop.getProperty(COMMENTS_ENDPOINT_QUERY_PARAM_POST_ID);
         String url = baseUrl + commentsEndpointQueryParamPostId + postId;
-        log.info("URL to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         Response response = when().get(url);
+        return getComments(response);
+    }
+
+    private static AllComments getComments(Response response){
         List<SingleComment> allSingleComments = Arrays.asList(response.getBody().as(SingleComment[].class));
 
         AllComments allComments = new AllComments();

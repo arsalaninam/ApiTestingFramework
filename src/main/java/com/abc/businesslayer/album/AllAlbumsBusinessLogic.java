@@ -28,11 +28,7 @@ public class AllAlbumsBusinessLogic extends PropertyReader {
         log.info("URL to be hit:" + url);
 
         Response response = when().get(url);
-        List<SingleAlbum> allSingleAlbums = Arrays.asList(response.getBody().as(SingleAlbum[].class));
-
-        AllAlbums allAlbums = new AllAlbums();
-        allAlbums.setListOfAlbums(allSingleAlbums);
-        return allAlbums;
+        return getAlbums(response);
     }
 
     /**
@@ -43,9 +39,12 @@ public class AllAlbumsBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String albumsEndpointQueryParamUserId = prop.getProperty(ALBUMS_ENDPOINT_QUERY_PARAM_USER_ID);
         String url = baseUrl + albumsEndpointQueryParamUserId + userId;
-        log.info("URL to be hit:" + url);
-
+        log.info("URL to be hit : " + url);
         Response response = when().get(url);
+        return getAlbums(response);
+    }
+
+    private static AllAlbums getAlbums(Response response) {
         List<SingleAlbum> allSingleAlbums = Arrays.asList(response.getBody().as(SingleAlbum[].class));
 
         AllAlbums allAlbums = new AllAlbums();
