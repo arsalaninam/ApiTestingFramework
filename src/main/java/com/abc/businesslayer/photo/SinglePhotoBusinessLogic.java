@@ -25,11 +25,11 @@ public class SinglePhotoBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String photosEndpoint = prop.getProperty(PHOTOS_ENDPOINT);
         String url = baseUrl + photosEndpoint + id;
-        log.info("API to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         Response response = when().get(url);
         SinglePhoto singlePhoto = response.getBody().as(SinglePhoto.class);
-        log.info("Info: " + singlePhoto);
+        log.info("Info : " + singlePhoto);
         return singlePhoto;
     }
 }

@@ -25,11 +25,11 @@ public class SingleCommentBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String commentsEndpoint = prop.getProperty(COMMENTS_ENDPOINT);
         String url = baseUrl + commentsEndpoint + id;
-        log.info("API to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         Response response = when().get(url);
         SingleComment singleComment = response.getBody().as(SingleComment.class);
-        log.info("Info: " + singleComment);
+        log.info("Info : " + singleComment);
         return singleComment;
     }
 }

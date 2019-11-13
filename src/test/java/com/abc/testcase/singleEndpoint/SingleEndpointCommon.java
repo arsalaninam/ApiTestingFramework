@@ -38,5 +38,4 @@ public class SingleEndpointCommon extends PropertyReader {
                 expectContentType(ContentType.JSON).
                 build();
     }
-
 }
