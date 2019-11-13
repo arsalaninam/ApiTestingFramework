@@ -28,11 +28,11 @@ public class SingleUserBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String usersEndpoint = prop.getProperty(USERS_ENDPOINT);
         String url = baseUrl + usersEndpoint + id;
-        log.info("API to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         Response response = when().get(url);
         SingleUser singleUser = response.getBody().as(SingleUser.class);
-        log.info("Info: " + singleUser);
+        log.info("Info : " + singleUser);
         return singleUser;
     }
 
@@ -46,22 +46,15 @@ public class SingleUserBusinessLogic extends PropertyReader {
         String baseUrl = prop.getProperty(BASE_URL);
         String users = prop.getProperty(USERS_ENDPOINT);
         String url = baseUrl + users;
-        log.info("URL to be hit:" + url);
+        log.info("URL to be hit : " + url);
 
         AllUsers allUsers = AllUsersBusinessLogic.getAllUsers();
         List<SingleUser> allUsersList = allUsers.getListOfUsers();
         SingleUser singleUser = new SingleUser();
 
-        for (int i = 0; i < allUsersList.size(); i++) {
-            if (allUsersList.get(i).getUsername().equalsIgnoreCase(username)) {
-                singleUser.setId(allUsersList.get(i).getId());
-                singleUser.setName(allUsersList.get(i).getName());
-                singleUser.setUsername(allUsersList.get(i).getUsername());
-                singleUser.setEmail(allUsersList.get(i).getEmail());
-                singleUser.setAddress(allUsersList.get(i).getAddress());
-                singleUser.setPhone(allUsersList.get(i).getPhone());
-                singleUser.setWebsite(allUsersList.get(i).getWebsite());
-                singleUser.setCompany(allUsersList.get(i).getCompany());
+        for (SingleUser user : allUsersList) {
+            if (user.getUsername().equalsIgnoreCase(username)) {
+                return user;
             }
         }
         return singleUser;
