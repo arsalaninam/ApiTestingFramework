@@ -10,6 +10,7 @@ import com.abc.util.ObjectFactory;
 import com.abc.util.PropertyReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -49,7 +50,7 @@ public class AlbumsOfUserTest extends PropertyReader {
 
         SingleUser singleUser = SingleUserBusinessLogic.getSingleUserByUserName(username);
         log.info("Username : " + username);
-        softAssert.assertNotNull(singleUser);
+        Assert.assertNotNull(singleUser);
         int userId = singleUser.getId();
         log.info("User Id: " + userId);
 

@@ -13,6 +13,7 @@ import com.abc.util.ObjectFactory;
 import com.abc.util.PropertyReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -53,20 +54,20 @@ public class CommentsOfPostsByUserTest extends PropertyReader {
 
         SingleUser singleUser = SingleUserBusinessLogic.getSingleUserByUserName(userName);
         log.info("Username : " + userName);
-        softAssert.assertNotNull(singleUser);
+        Assert.assertNotNull(singleUser);
         int userId = singleUser.getId();
         log.info("User Id: " + userId);
 
         AllPosts allPostsFromUserId = AllPostsBusinessLogic.getAllPostsForUserId(userId);
         List<SinglePost> allPostsList = allPostsFromUserId.getListOfPosts();
-        softAssert.assertNotNull(allPostsList);
+        Assert.assertNotNull(allPostsList);
 
         for (SinglePost singlePost : allPostsList) {
             int postsId = singlePost.getId();
 
             AllComments allCommentsForPostId = AllCommentsBusinessLogic.getAllCommentsForPostId(postsId);
             List<SingleComment> allCommentsList = allCommentsForPostId.getListOfComments();
-            softAssert.assertNotNull(allCommentsList);
+            Assert.assertNotNull(allCommentsList);
 
             for (SingleComment singleComment : allCommentsList) {
 
