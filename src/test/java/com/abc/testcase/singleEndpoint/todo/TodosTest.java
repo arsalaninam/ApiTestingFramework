@@ -8,6 +8,7 @@ import com.abc.pojo.todo.AllTodos;
 import com.abc.pojo.todo.SingleTodo;
 import com.abc.testcase.singleEndpoint.SingleEndpointCommon;
 import io.restassured.response.Response;
+import org.apache.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -15,7 +16,6 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static com.abc.constant.ResponseCodeConstant.STATUS_CODE_404;
 import static com.abc.constant.ScenarioNameConstant.*;
 import static com.abc.constant.ServiceConstant.TODOS_ENDPOINT;
 import static io.restassured.RestAssured.given;
@@ -109,6 +109,6 @@ public class TodosTest extends SingleEndpointCommon {
                 spec(requestSpecification).
                 when().
                 get(todosEndpoint + id);
-        Assert.assertEquals(response.statusCode(), STATUS_CODE_404);
+        Assert.assertEquals(response.statusCode(), HttpStatus.SC_NOT_FOUND);
     }
 }
