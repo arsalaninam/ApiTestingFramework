@@ -7,10 +7,10 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import org.apache.http.HttpStatus;
 import org.testng.annotations.BeforeClass;
 import org.testng.asserts.SoftAssert;
 
-import static com.abc.constant.ResponseCodeConstant.STATUS_CODE_200;
 import static com.abc.constant.ServiceConstant.BASE_URL;
 
 public class SingleEndpointCommon extends PropertyReader {
@@ -34,7 +34,7 @@ public class SingleEndpointCommon extends PropertyReader {
                 build();
 
         responseSpecification = new ResponseSpecBuilder().
-                expectStatusCode(STATUS_CODE_200).
+                expectStatusCode(HttpStatus.SC_OK).
                 expectContentType(ContentType.JSON).
                 build();
     }
